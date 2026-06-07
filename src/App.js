@@ -4,6 +4,7 @@ import './App.css';
 
 function App() {
   const [currentPage, setCurrentPage] = useState('home'); // 'home' или 'guarantee'
+  const [selectedImage, setSelectedImage] = useState(null);
 
   // Данные о товаре
   const products = [
@@ -70,22 +71,35 @@ function App() {
             {products.map(product => (
               <div key={product.id} className="product-card">
                 <div className="product-image-container">
-                  <img 
-                    src={product.images[0]} 
-                    alt={product.name}
-                    className="product-image"
-                    loading="lazy"
-                  />
+                  <div 
+                    className="main-image-wrapper"
+                    onClick={() => setSelectedImage(product.images[0])}
+                  >
+                    <img 
+                      src={product.images[0]} 
+                      alt={product.name}
+                      className="product-image"
+                      loading="lazy"
+                    />
+                    <div className="image-overlay">
+                      <span className="zoom-icon">🔍</span>
+                    </div>
+                  </div>
                   {product.images.length > 1 && (
                     <div className="product-thumbnails">
                       {product.images.slice(1).map((img, index) => (
-                        <img 
+                        <div 
                           key={index}
-                          src={img} 
-                          alt={`${product.name} ${index + 2}`}
-                          className="thumbnail"
-                          loading="lazy"
-                        />
+                          className="thumbnail-wrapper"
+                          onClick={() => setSelectedImage(img)}
+                        >
+                          <img 
+                            src={img} 
+                            alt={`${product.name} ${index + 2}`}
+                            className="thumbnail"
+                            loading="lazy"
+                          />
+                        </div>
                       ))}
                     </div>
                   )}
@@ -158,6 +172,28 @@ function App() {
           </a>
         </section>
       </main>
+
+      {/* Модальное окно для просмотра изображений */}
+      {selectedImage && (
+        <div 
+          className="image-modal"
+          onClick={() => setSelectedImage(null)}
+        >
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <button 
+              className="close-modal"
+              onClick={() => setSelectedImage(null)}
+            >
+              ×
+            </button>
+            <img 
+              src={selectedImage} 
+              alt="увеличенное изображение"
+              className="modal-image"
+            />
+          </div>
+        </div>
+      )}
     </>
   );
 
