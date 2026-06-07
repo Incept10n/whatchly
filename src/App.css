@@ -149,6 +149,27 @@ body {
   font-size: 1.1rem;
 }
 
+/* Стили для блока с просьбой - вынесены на общий уровень */
+.customer-appeal {
+  background: #fff3cd;
+  border: 1px solid #ffeaa7;
+  border-radius: 8px;
+  padding: 20px;
+  margin-top: 25px;
+}
+
+.customer-appeal h4 {
+  color: #856404;
+  margin-bottom: 15px;
+  font-size: 1.3rem;
+}
+
+.customer-appeal p {
+  color: #856404;
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
 .footer {
   text-align: center;
   padding: 30px;
