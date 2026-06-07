@@ -1,8 +1,37 @@
+import { Helmet } from 'react-helmet-async';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
+      <Helmet>
+        <title>Гарантия на реставрированные часы | Watchly</title>
+        <meta name="description" content="Гарантия 30 дней на все реставрированные часы. Бесплатный ремонт или возврат денег при гарантийном случае. Качество проверенное временем." />
+        <meta name="keywords" content="часы, реставрация, гарантия, ремонт, возврат, механика, антиквариат" />
+        <meta name="author" content="Watchly" />
+        <link rel="icon" type="image/png" href="/favicon.ico" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+        
+        {/* Open Graph / Social Media */}
+        <meta property="og:title" content="Гарантия на реставрированные часы | Watchly" />
+        <meta property="og:description" content="Гарантия 30 дней на все реставрированные часы. Бесплатный ремонт или возврат денег при гарантийном случае." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://watchly.inceptech.ru/guarantee" />
+        <meta property="og:image" content="/social-image.jpg" />
+        
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Гарантия на реставрированные часы | Watchly" />
+        <meta name="twitter:description" content="Гарантия 30 дней на все реставрированные часы. Бесплатный ремонт или возврат денег при гарантийном случае." />
+        <meta name="twitter:image" content="/social-image.jpg" />
+        
+        {/* Canonical URL */}
+        <link rel="canonical" href="https://watchly.inceptech.ru/guarantee" />
+      </Helmet>
+      
+      {/* Остальной код приложения остается без изменений */}
       <header className="header">
         <h1>Гарантия на реставрированные часы</h1>
         <p className="subtitle">Качество проверенное временем</p>
