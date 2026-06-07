@@ -1,37 +1,177 @@
+import { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import './App.css';
 
 function App() {
-  return (
-    <div className="App">
+  const [currentPage, setCurrentPage] = useState('home'); // 'home' или 'guarantee'
+
+  // Данные о товаре
+  const products = [
+    {
+      id: 1,
+      name: "Orient Crystal «3 Stars» (EA 469WB6-80 CA)",
+      description: "Orient 46943 — легендарная японская механика с полувековой историей. Механические часы с автоподзаводом на 21 камне. Частота баланса — 21 600 полуколебаний в час, запас хода — около 40 часов. Механизм разработан в 1971 году и до сих пор производится в модернизированном виде — проверенная временем надежность.",
+      price: "6100 ₽",
+      images: [
+        "/images/watch1-1.jpg",
+        "/images/watch1-2.jpg",
+        "/images/watch1-3.jpg"
+      ],
+      avitoLink: "https://www.avito.ru/draft/1699424711", // change after release
+      year: "1970s",
+      movement: "Механический с автоподзаводом",
+      condition: "Хорошее состояние, лёгкие следы носки"
+    }
+  ];
+
+  // Главная страница
+  const HomePage = () => (
+    <>
+      <Helmet>
+        <title>Реставрированные часы | Watchly</title>
+        <meta name="description" content="Реставрированные часы. Гарантия качества, подлинности и долговечности. Каждая пара - это история времени." />
+        <meta name="keywords" content="реставрация часов, винтажные часы, антикварные часы, механические часы, часы ручной работы, коллекционные часы, Orient, Seiko, Citizen, Casio, Tissot, Swatch" />
+        <meta name="author" content="Watchly" />
+        <link rel="canonical" href="https://watchly.inceptech.ru" />
+      </Helmet>
+      
+      <header className="header">
+        <h1>Реставрированные Часы</h1>
+        <p className="subtitle">Даём часам второй ход</p>
+      </header>
+
+      <main className="content">
+        {/* Hero Section */}
+        <section className="hero-section">
+          <div className="hero-content">
+            <h2>Искусство реставрации часов</h2>
+            <p>Мы специализируемся на профессиональной реставрации винтажных и антикварных часов. Каждая пара проходит тщательную проверку, профессиональную чистку и восстановление для обеспечения безупречной работы на долгие годы.</p>
+            <div className="hero-features">
+              <div className="feature">
+                <span className="feature-icon">⏱️</span>
+                <span>Гарантия 30 дней</span>
+              </div>
+              <div className="feature">
+                <span className="feature-icon">🔧</span>
+                <span>Профессиональная реставрация</span>
+              </div>
+              <div className="feature">
+                <span className="feature-icon">✅</span>
+                <span>Замена батареек, стёкол, ремешков</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Products Section */}
+        <section className="products-section">
+          <h2 className="section-title">Наши часы</h2>
+          <div className="products-grid">
+            {products.map(product => (
+              <div key={product.id} className="product-card">
+                <div className="product-image-container">
+                  <img 
+                    src={product.images[0]} 
+                    alt={product.name}
+                    className="product-image"
+                    loading="lazy"
+                  />
+                  {product.images.length > 1 && (
+                    <div className="product-thumbnails">
+                      {product.images.slice(1).map((img, index) => (
+                        <img 
+                          key={index}
+                          src={img} 
+                          alt={`${product.name} ${index + 2}`}
+                          className="thumbnail"
+                          loading="lazy"
+                        />
+                      ))}
+                    </div>
+                  )}
+                </div>
+                <div className="product-info">
+                  <h3 className="product-name">{product.name}</h3>
+                  <p className="product-description">{product.description}</p>
+                  <div className="product-details">
+                    <div className="detail-item">
+                      <span className="detail-label">Год:</span>
+                      <span className="detail-value">{product.year}</span>
+                    </div>
+                    <div className="detail-item">
+                      <span className="detail-label">Механизм:</span>
+                      <span className="detail-value">{product.movement}</span>
+                    </div>
+                    <div className="detail-item">
+                      <span className="detail-label">Состояние:</span>
+                      <span className="detail-value">{product.condition}</span>
+                    </div>
+                  </div>
+                  <div className="product-price">{product.price}</div>
+                  <a 
+                    href={product.avitoLink} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="buy-button"
+                  >
+                    Купить на Авито
+                  </a>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* About Section */}
+        <section className="about-section">
+          <h2 className="section-title">Почему выбирают нас</h2>
+          <div className="about-content">
+            <div className="about-item">
+              <div className="about-icon">🔧</div>
+              <h3>Профессиональная реставрация</h3>
+              <p>Наши мастера имеют опыт работы с механическими часами. Каждая деталь проверяется и при необходимости заменяется.</p>
+            </div>
+            <div className="about-item">
+              <div className="about-icon">🛡️</div>
+              <h3>Гарантия качества</h3>
+              <p>Все реставрированные часы проходят 30-дневную гарантию на механизм и функциональность. Мы уверены в качестве нашей работы.</p>
+            </div>
+            <div className="about-item">
+              <div className="about-icon">📦</div>
+              <h3>Безопасная доставка</h3>
+              <p>Часы тщательно упаковываются и отправляются с отслеживанием. В комплекте идет гарантийный сертификат и инструкция по уходу.</p>
+            </div>
+          </div>
+        </section>
+
+        {/* CTA Section */}
+        <section className="cta-section">
+          <h2>Интересуют другие модели?</h2>
+          <p>Подпишитесь на наш Авито-профиль, чтобы первыми узнавать о новых поступлениях</p>
+          <a 
+            href="https://www.avito.ru/user/5bf58521832075b8d79607300f84fb84/profile/all" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="cta-button"
+          >
+            Перейти в профиль на Авито
+          </a>
+        </section>
+      </main>
+    </>
+  );
+
+  // Страница гарантии
+  const GuaranteePage = () => (
+    <>
       <Helmet>
         <title>Гарантия на реставрированные часы | Watchly</title>
         <meta name="description" content="Гарантия 30 дней на все реставрированные часы. Бесплатный ремонт или возврат денег при гарантийном случае. Качество проверенное временем." />
         <meta name="keywords" content="часы, реставрация, гарантия, ремонт, возврат, механика, антиквариат" />
         <meta name="author" content="Watchly" />
-        <link rel="icon" type="image/png" href="/favicon.ico" />
-        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-        
-        {/* Open Graph / Social Media */}
-        <meta property="og:title" content="Гарантия на реставрированные часы | Watchly" />
-        <meta property="og:description" content="Гарантия 30 дней на все реставрированные часы. Бесплатный ремонт или возврат денег при гарантийном случае." />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://watchly.inceptech.ru/guarantee" />
-        <meta property="og:image" content="/social-image.jpg" />
-        
-        {/* Twitter */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Гарантия на реставрированные часы | Watchly" />
-        <meta name="twitter:description" content="Гарантия 30 дней на все реставрированные часы. Бесплатный ремонт или возврат денег при гарантийном случае." />
-        <meta name="twitter:image" content="/social-image.jpg" />
-        
-        {/* Canonical URL */}
         <link rel="canonical" href="https://watchly.inceptech.ru/guarantee" />
       </Helmet>
       
-      {/* Остальной код приложения остается без изменений */}
       <header className="header">
         <h1>Гарантия на реставрированные часы</h1>
         <p className="subtitle">Качество проверенное временем</p>
@@ -160,13 +300,60 @@ function App() {
             <p>💬 Авито личные сообщения - <a href="https://www.avito.ru/user/5bf58521832075b8d79607300f84fb84/profile/all?id=0&src=item&page_from=from_item_card&iid=1699424711&sellerId=5bf58521832075b8d79607300f84fb84" target="_blank" rel="noopener noreferrer">перейти в профиль</a></p>
             <p>🕒 Время работы: Пн-Пт 10:00-18:00</p>
           </div>
-
         </section>
       </main>
+    </>
+  );
 
+  return (
+    <div className="App">
+      {/* Навигация */}
+      <nav className="navigation">
+        <div className="nav-container">
+          <button 
+            className={`nav-link ${currentPage === 'home' ? 'active' : ''}`}
+            onClick={() => setCurrentPage('home')}
+          >
+            Главная
+          </button>
+          <button 
+            className={`nav-link ${currentPage === 'guarantee' ? 'active' : ''}`}
+            onClick={() => setCurrentPage('guarantee')}
+          >
+            Гарантия
+          </button>
+        </div>
+      </nav>
+
+      {/* Отображение текущей страницы */}
+      {currentPage === 'home' ? <HomePage /> : <GuaranteePage />}
+
+      {/* Футер (один для обеих страниц) */}
       <footer className="footer">
-        <p>© 2026 Часовая Реставрация. Реставрация часов с гарантией качества</p>
-        <p className="disclaimer">Гарантия действует при наличии документа (чека) о покупке</p>
+        <div className="footer-content">
+          <div className="footer-section">
+            <h3>Watchly</h3>
+            <p>Профессиональная реставрация часов</p>
+          </div>
+          <div className="footer-section">
+            <h4>Контакты</h4>
+            <p>📧 Email: <a href="mailto:Incept1on.hf@yandex.ru">Incept1on.hf@yandex.ru</a></p>
+            <p>💬 Авито: <a href="https://www.avito.ru/user/5bf58521832075b8d79607300f84fb84/profile/all" target="_blank" rel="noopener noreferrer">профиль</a></p>
+          </div>
+          <div className="footer-section">
+            <h4>Информация</h4>
+            <button 
+              className="footer-link"
+              onClick={() => setCurrentPage('guarantee')}
+            >
+              Гарантия
+            </button>
+            <p>🕒 Время работы: Пн-Пт 10:00-18:00</p>
+          </div>
+        </div>
+        <div className="footer-bottom">
+          <p>© 2026 Часовая Реставрация. Реставрация часов с гарантией качества</p>
+        </div>
       </footer>
     </div>
   );
