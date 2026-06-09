@@ -16,7 +16,7 @@ const products = [
       "/images/watch1-2.jpg",
       "/images/watch1-3.jpg",
     ],
-    avitoLink: "https://www.avito.ru/draft/1699424711",
+    avitoLink: "https://www.avito.ru/sankt-peterburg/chasy_i_ukrasheniya/orient_crystal_21_kamen_mehanicheskie_chasy_8125568100",
     year: "1970s",
     movement: "Механический с автоподзаводом",
     condition: "Хорошее состояние, лёгкие следы носки",
