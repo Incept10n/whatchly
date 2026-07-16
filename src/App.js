@@ -274,7 +274,7 @@ function HomePage() {
             поступлениях
           </p>
           <a
-            href="https://www.avito.ru/user/5bf58521832075b8d79607300f84fb84/profile/all"
+            href="https://www.avito.ru/brands/5bf58521832075b8d79607300f84fb84"
             target="_blank"
             rel="noopener noreferrer"
             className="cta-button"
