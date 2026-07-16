@@ -7,16 +7,16 @@ import "./App.css";
 const products = [
   {
     id: 1,
-    name: "Orient Crystal «3 Stars» (EA 469WB6-80 CA)",
+    name: "Orient Crystal «3 Stars» (EM5A-D0 CA)",
     description:
       "Orient 46943 — легендарная японская механика с полувековой историей. Механические часы с автоподзаводом на 21 камне. Частота баланса — 21 600 полуколебаний в час, запас хода — около 40 часов. Механизм разработан в 1971 году и до сих пор производится в модернизированном виде — проверенная временем надежность.",
-    price: "6100 ₽",
+    price: "5700 ₽",
     images: [
-      "/images/watch1-1.jpg",
-      "/images/watch1-2.jpg",
-      "/images/watch1-3.jpg",
+      "/images/third-1.jpg",
+      "/images/third-2.jpg",
+      "/images/third-3.jpg",
     ],
-    avitoLink: "https://www.avito.ru/sankt-peterburg/chasy_i_ukrasheniya/orient_crystal_21_kamen_mehanicheskie_chasy_8125568100",
+    avitoLink: "",
     year: "1970s",
     movement: "Механический с автоподзаводом",
     condition: "Хорошее состояние, лёгкие следы носки",
@@ -85,7 +85,7 @@ function Footer() {
           <p>
             💬 Авито:{" "}
             <a
-              href="https://www.avito.ru/user/5bf58521832075b8d79607300f84fb84/profile/all"
+              href="https://www.avito.ru/brands/5bf58521832075b8d79607300f84fb84"
               target="_blank"
               rel="noopener noreferrer"
             >
